@@ -7,7 +7,7 @@ import sys
 # Checking that all the arguments were entered on the command line, exiting with a message if not.
 def checkstart():
     if len(sys.argv) != 3:
-        argumentsNotSet = 'Missing argument(s).\nUsage is like so:\nPython scrape_n_spell.py http://WEB-ADDRESS LOG-FILENAME'
+        argumentsNotSet = 'Missing argument(s).\nUsage is like so:\nPython scrape_n_spell.py http://WEB-ADDRESS LOG-FILENAME.TXT'
         print (argumentsNotSet)
         sys.exit(1)
 
@@ -24,10 +24,17 @@ spellingSuggestionString = "" # A string variable holding the suggested words fr
 
 print ("Scrape 'n' Spell begins!\n.")
 
-d = enchant.Dict("en_US")   # Use US English Dictionary
+# Combine American English and Learnosity Words dictionaries
+d = enchant.DictWithPWL("en_US","learnosity_words_dictionary.txt") 
+
+# d = enchant.Dict("en_US")   # Use US English Dictionary
 # d.check("enchant") #spellcheck -- succeeds (spelling correct)
 # d.check("enchnt") #spellcheck - fails (spelling incorrect)
 # d.suggest("enchnt") # Get suggestions for words that nearly match this incorrect spelling
+
+# Compile some fancy regex for string handling
+fancyDecimalRegex = re.compile('\d') # Regex for "all decimal digits" pattern
+fancySpacesRegex = re.compile(r"\s*\s*$") # Regex for "trailing whitespace to end-of-line" pattern)
 
 # Run Lynx on the console to get a text-only read of the web page.
 webPageTextDump = subprocess.run(["lynx", "-dump", startPage, "/dev/null"], stdout=subprocess.PIPE)
@@ -65,7 +72,6 @@ stringFromDump = stringFromDump.replace("\'-dump\'", " ")
 stringFromDump = stringFromDump.replace("\'/dev/null\'", " ")
 stringFromDump = stringFromDump.replace("returncode", " ")
 stringFromDump = stringFromDump.replace("stdout", " ")
-
 # Strings that were troublesome to remove:
 #stringFromDump = stringFromDump.replace(".", " ") # killed real property names and sentences
 #stringFromDump = stringFromDump.replace(":", " ") # caused URL text to be fragmented
@@ -80,12 +86,15 @@ arrayOfWords = stringFromDump.split(' ')
 # Take one word out of the text dump (space-to-space) range
 for each in arrayOfWords:
 	wordyWord = each # Copy the current "word" to a temporary value
-
 	# and then check the URLs array to see if this entry is already in there. If it is, discard it. 
 	# If it's NOT in there, copy it into the URLs array as a new array entry.
-
-	if (wordyWord == ""): continue # if string is blank, skip to the next value 
 	if "http" in wordyWord: continue # if string contains "http", then skip to the next value
+	wordyWord = wordyWord.replace(".", " ") #strip out any full stops in the word to be spellchecked
+	wordyWord = wordyWord.replace(":", " ") #strip out any colons in the word to be spellchecked
+	wordyWord = wordyWord.replace(";", " ") #strip out any semicolons in the word to be spellchecked
+	wordyWord = fancyDecimalRegex.sub("", wordyWord) # Remove any numbers in the text to be spellchecked
+	wordyWord = fancySpacesRegex.sub("", wordyWord) # Remove leading or trailing spaces
+	if (wordyWord == ""): continue # if string is blank, skip to the next value 
 	if d.check(wordyWord): # correct spelling execution block
 		f.write(wordyWord) # Write the word to disk
 		spellingResult = " -- CORRECT SPELLING"
@@ -96,14 +105,15 @@ for each in arrayOfWords:
 		spellingResult = " -- *** INCORRECT SPELLING ***"
 		f.write(spellingResult)
 		f.write("\n")
+		print ("ERROR: ", wordyWord) # echo the incorrectly spelled word to console
 		spellingSuggestion = d.suggest(wordyWord)
 		spellingSuggestionString = str(spellingSuggestion)
 		f.write("suggest: ")
 		f.write(spellingSuggestionString)
 		f.write("\n")
+		print ("suggest: ", spellingSuggestionString) # echo the spelling suggestion to console
 # end if statement
 	f.write("\n")
-	print (wordyWord) # echo the word to console
 #end for loop
 
 f.close() # Close off the log file
@@ -112,4 +122,3 @@ print ("Spellcheck complete!")
 print ("Output written to log file: ", logFileName)
 
 #End of file.
-
