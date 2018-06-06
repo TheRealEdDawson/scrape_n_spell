@@ -33,8 +33,9 @@ d = enchant.DictWithPWL("en_US","learnosity_words_dictionary.txt")
 # d.suggest("enchnt") # Get suggestions for words that nearly match this incorrect spelling
 
 # Compile some fancy regex for string handling
-fancyDecimalRegex = re.compile('\d') # Regex for "all decimal digits" pattern
-fancySpacesRegex = re.compile(r"\s*\s*$") # Regex for "trailing whitespace to end-of-line" pattern)
+fancyDecimalRegex = re.compile('\d') # Regex for "all decimal digits"
+fancySpacesRegex = re.compile(r"\s*\s*$") # Regex for leading or trailing whitespace 
+fancyPunctuationRegex = re.compile(r"\W*\W*$") # Regex for leading or trailing punctuation
 
 # Run Lynx on the console to get a text-only read of the web page.
 webPageTextDump = subprocess.run(["lynx", "-dump", startPage, "/dev/null"], stdout=subprocess.PIPE)
@@ -92,8 +93,11 @@ for each in arrayOfWords:
 	wordyWord = wordyWord.replace(".", " ") #strip out any full stops in the word to be spellchecked
 	wordyWord = wordyWord.replace(":", " ") #strip out any colons in the word to be spellchecked
 	wordyWord = wordyWord.replace(";", " ") #strip out any semicolons in the word to be spellchecked
-	wordyWord = fancyDecimalRegex.sub("", wordyWord) # Remove any numbers in the text to be spellchecked
-	wordyWord = fancySpacesRegex.sub("", wordyWord) # Remove leading or trailing spaces
+	wordyWord = wordyWord.replace("\\", "") #strip out any backslashes in the word to be spellchecked
+	wordyWord = wordyWord.replace("/", "") #strip out any forward slashes in the word to be spellchecked
+	wordyWord = fancyDecimalRegex.sub("", wordyWord) # Remove any numbers in the word
+	wordyWord = fancySpacesRegex.sub("", wordyWord) # Remove leading or trailing spaces in the word
+	wordyWord = fancyPunctuationRegex.sub("", wordyWord) # Remove leading or trailing punctuation in the word
 	if (wordyWord == ""): continue # if string is blank, skip to the next value 
 	if d.check(wordyWord): # correct spelling execution block
 		f.write(wordyWord) # Write the word to disk
@@ -102,7 +106,7 @@ for each in arrayOfWords:
 	else: #incorrect spelling execution block
 		f.write("\n")
 		f.write(wordyWord) # Write the word to disk
-		spellingResult = " -- *** INCORRECT SPELLING ***"
+		spellingResult = " *** INCORRECT SPELLING ***"
 		f.write(spellingResult)
 		f.write("\n")
 		print ("ERROR: ", wordyWord) # echo the incorrectly spelled word to console
