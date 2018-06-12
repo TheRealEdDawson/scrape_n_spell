@@ -3,6 +3,10 @@ A system to scrape words off a production website and spellcheck them all. Becau
 
 <h2>Setup (for Linux command-line environment)</h2>
 
+<h3>Install Python 3 (if not already pre-installed)</h3>
+
+https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python
+
 <h3>Install pyenchant</h3>
 
     pip install pyenchant 
@@ -25,11 +29,9 @@ OR
 
 (macOS)
 
+OR
+
 (use the package manager available to you)
-
-<h3>Install Python 3 (if not already pre-installed)</h3>
-
-https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python
 
 <h2>Usage</h2>
 
