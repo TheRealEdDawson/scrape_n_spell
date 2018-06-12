@@ -5,11 +5,18 @@ A system to scrape words off a production website and spellcheck them all. Becau
 
 <h3>Install pyenchant</h3>
 
-pip install pyenchant 
+    pip install pyenchant 
 
 <h3>Install Lynx (if not already pre-installed)</h3>
 
-apt-get install lynx
+    apt-get install lynx
+OR
+
+    yum install lynx
+    
+OR
+
+(use the package manager available to you)
 
 <h3>Install Python 3 (if not already pre-installed)</h3>
 
@@ -17,7 +24,7 @@ https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-vers
 
 <h2>Usage</h2>
 
-python scrape_n_spell.py http://www.example.com/page-to-spellcheck OUTPUTFILENAME.TXT
+    python scrape_n_spell.py http://www.example.com/page-to-spellcheck OUTPUTFILENAME.TXT
 
 Where "OUTPUTFILENAME" is the name of the text file where you want the results to be recorded.
 
