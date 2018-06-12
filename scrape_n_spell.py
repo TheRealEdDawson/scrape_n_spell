@@ -27,11 +27,6 @@ print ("Scrape 'n' Spell begins!\n.")
 # Combine American English and Learnosity Words dictionaries
 d = enchant.DictWithPWL("en_US","learnosity_words_dictionary.txt") 
 
-# d = enchant.Dict("en_US")   # Use US English Dictionary
-# d.check("enchant") #spellcheck -- succeeds (spelling correct)
-# d.check("enchnt") #spellcheck - fails (spelling incorrect)
-# d.suggest("enchnt") # Get suggestions for words that nearly match this incorrect spelling
-
 # Compile some fancy regex for string handling
 fancyDecimalRegex = re.compile('\d') # Regex for "all decimal digits"
 fancySpacesRegex = re.compile(r"\s*\s*$") # Regex for leading or trailing whitespace 
@@ -49,9 +44,9 @@ stringFromDump = str(webPageTextDump)  # convert the page text to string
 stringFromDump = stringFromDump.replace("  ", "")
 
 # Remove other troublesome text from the string
-stringFromDump = stringFromDump.replace("\\n", " ") # Delete all "newline" control chars(can we kill all non-intra-word punctuation?)
-stringFromDump = stringFromDump.replace("[", " ")   # delete all left-handed square brackets.
-stringFromDump = stringFromDump.replace("]", " ")   # delete all right-handed brackets.
+stringFromDump = stringFromDump.replace("\\n", " ") # Delete all "newline" control chars(kill all non-intra-word punctuation)
+stringFromDump = stringFromDump.replace("[", " ")   
+stringFromDump = stringFromDump.replace("]", " ")   
 stringFromDump = stringFromDump.replace("<", " ")
 stringFromDump = stringFromDump.replace(">", " ")
 stringFromDump = stringFromDump.replace("(", " ")
