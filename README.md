@@ -10,11 +10,20 @@ A system to scrape words off a production website and spellcheck them all. Becau
 <h3>Install Lynx (if not already pre-installed)</h3>
 
     apt-get install lynx
+
+(Ubuntu / Debian)
+
 OR
 
     yum install lynx
-    
+
+(Red Hat / CENTOS)
+
 OR
+
+    brew install lynx 
+
+(macOS)
 
 (use the package manager available to you)
 
