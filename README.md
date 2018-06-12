@@ -9,7 +9,7 @@ pip install pyenchant
 
 <h3>Install Lynx (if not already pre-installed)</h3>
 
-brew install lynx
+apt-get install lynx
 
 <h3>Install Python 3 (if not already pre-installed)</h3>
 
