@@ -11,6 +11,10 @@ pip install pyenchant
 
 brew install lynx
 
+<h3>Install Python 3(if not already pre-installed)</h3>
+
+https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python
+
 <h2>Usage</h2>
 
 python scrape_n_spell.py OUTPUTFILENAME.TXT
