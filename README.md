@@ -1,7 +1,7 @@
 # scrape_n_spell
 A system to scrape words off a production website and spellcheck them all. Because your site is already in production, and we don't really spellcheck code, do we?
 
-<h2>Setup (for Linux-type command-line environment)</h2>
+<h2>Setup (for Linux command-line environment)</h2>
 
 <h3>Install pyenchant (required)</h3>
 
