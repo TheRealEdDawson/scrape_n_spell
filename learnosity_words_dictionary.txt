@@ -44,7 +44,9 @@ smartphones
 SVG
 toolbar
 Vimeo
+walkthrough
 webinar
+workflow
 wysihtml
 WYSIWYG
 XHTML
