@@ -44,6 +44,8 @@ smartphones
 spellcheck
 SVG
 toolbar
+URL
+URLs
 Vimeo
 walkthrough
 webinar
