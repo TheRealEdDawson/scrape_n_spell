@@ -38,6 +38,7 @@ refactor
 refactored
 REST
 rubric
+SHA
 SpokenMath
 smartphone
 smartphones
@@ -46,6 +47,7 @@ SVG
 toolbar
 URL
 URLs
+UUID
 Vimeo
 walkthrough
 webinar
