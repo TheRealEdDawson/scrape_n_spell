@@ -45,6 +45,7 @@ smartphones
 spellcheck
 SVG
 toolbar
+UI
 URL
 URLs
 UUID
