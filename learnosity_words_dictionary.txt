@@ -41,6 +41,7 @@ rubric
 SpokenMath
 smartphone
 smartphones
+spellcheck
 SVG
 toolbar
 Vimeo
