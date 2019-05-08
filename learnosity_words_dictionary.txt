@@ -46,6 +46,7 @@ toolbar
 Vimeo
 walkthrough
 webinar
+webinars
 workflow
 wysihtml
 WYSIWYG
