@@ -1,5 +1,5 @@
 # scrape_n_spell
-A system to scrape words off a production website and spellcheck them all. Because your site is already in production, and we don't really spellcheck code, do we?
+A system to scrape words off a production website and spellcheck them all. Because your site is already in production, and we don't really spellcheck pages when we write them in a code editor, do we?
 
 <h2>Setup (for Linux command-line environment)</h2>
 
