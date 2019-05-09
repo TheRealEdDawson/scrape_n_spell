@@ -45,6 +45,7 @@ smartphone
 smartphones
 spellcheck
 SVG
+timestamp
 toolbar
 UI
 URL
