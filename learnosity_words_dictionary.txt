@@ -65,4 +65,5 @@ wysihtml
 WYSIWYG
 XHTML
 XML
+YAML
 YouTube
