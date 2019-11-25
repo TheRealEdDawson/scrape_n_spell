@@ -40,6 +40,8 @@ refactor
 refactored
 REST
 rubric
+SDK
+SDKs
 SHA
 SpokenMath
 smartphone
