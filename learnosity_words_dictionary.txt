@@ -53,6 +53,7 @@ URL
 URLs
 UUID
 Vimeo
+virtualization
 walkthrough
 webinar
 webinars
