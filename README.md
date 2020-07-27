@@ -12,6 +12,7 @@ Where "OUTPUTFILENAME" is the name of the text file where you want the results t
 * Uses the "Enchant" spellchecker library. https://www.abisource.com/projects/enchant/
 * Uses "pyenchant", a Python integration of Enchant. https://github.com/rfk/pyenchant
 
+
 <h2>Setup (for Linux command-line environment)</h2>
 
 <h3>Install Python 3 (if not already pre-installed)</h3>
