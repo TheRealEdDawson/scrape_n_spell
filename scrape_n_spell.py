@@ -38,6 +38,9 @@ webPageTextDump = subprocess.run(["lynx", "-dump", startPage, "/dev/null"], stdo
 print ("Website scraping complete.\n.") # (Website scraping) complete.
 
 f = open(logFileName, 'w') # Open the log file (overwriting old one)
+f.write('*** This is a spellcheck report from a scan of: \n')
+f.write(startPage) 
+f.write('\nTool home page: github.com/TheRealEdDawson/scrape_n_spell ***\n\n') # Write the initial line in the log file
 stringFromDump = str(webPageTextDump)  # convert the page text to string
 
 # Remove massive blocks of spaces and newline commands from the string
