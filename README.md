@@ -5,7 +5,8 @@ A system to scrape words off a production website and spellcheck them all. Becau
 
     python scrape_n_spell.py http://www.example.com/page-to-spellcheck OUTPUTFILENAME.TXT
 
-Where "OUTPUTFILENAME" is the name of the text file where you want the results to be recorded.
+Where "http://www.example.com/page-to-spellcheck" is the web page you want to spell check, and
+"OUTPUTFILENAME.TXT" is the name of the text file where you want the results to be recorded.
 
 * Designed for use on Linux-type command line systems. 
 * Requires "lynx" command to be available at the command line.
