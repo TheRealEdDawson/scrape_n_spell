@@ -16,15 +16,15 @@ Where "http://www.example.com/page-to-spellcheck" is the web page you want to sp
 
 <h2>Setup (for Linux command-line environment)</h2>
 
-<h3>Install Python 3 (if not already pre-installed)</h3>
+<h3>1. Install Python 3 (if not already pre-installed)</h3>
 
 https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python
 
-<h3>Install pyenchant</h3>
+<h3>2. Install pyenchant</h3>
 
     pip install pyenchant 
 
-<h3>Install Lynx (if not already pre-installed)</h3>
+<h3>3. Install Lynx (if not already pre-installed)</h3>
 
     apt-get install lynx
 
